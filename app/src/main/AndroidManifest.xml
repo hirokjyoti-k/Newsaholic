@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.adbu.newsaholic">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/news_app_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/news_app_icon_circle"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Newsaholic">
+        <activity
+            android:name=".ViewArticle"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
+            android:exported="true"
+            android:theme="@style/Theme.Newsaholic.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Register"
+            android:exported="false"
+            android:theme="@style/Theme.Newsaholic.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InterestArea"
+            android:exported="false"
+            android:theme="@style/Theme.Newsaholic.NoActionBar" />
+    </application>
+
+</manifest>

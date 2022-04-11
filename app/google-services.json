@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "588691666290",
+    "project_id": "newsaholic-33652",
+    "storage_bucket": "newsaholic-33652.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588691666290:android:9f9d89163ca6da82ad99eb",
+        "android_client_info": {
+          "package_name": "com.adbu.newsaholic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588691666290-mpn6vit15sifsvm7v1o17kc0q1ppm8pc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNkKjB7oscb2ZluspvmzmSmBO-18uxcL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588691666290-mpn6vit15sifsvm7v1o17kc0q1ppm8pc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

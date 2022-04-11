@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/drawable/business.xml" value="0.23333333333333334" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/drawable/button_shape.xml" value="0.26205128205128203" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/drawable/general_news.xml" value="0.23333333333333334" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/drawable/hospital.xml" value="0.23333333333333334" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.23333333333333334" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/drawable/laptop.xml" value="0.23333333333333334" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/drawable/movie.xml" value="0.23333333333333334" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/drawable/rounded_cornner.xml" value="0.23333333333333334" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/drawable/science.xml" value="0.23333333333333334" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/drawable/sports.xml" value="0.23333333333333334" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/activity_interest_area.xml" value="0.264" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/activity_login.xml" value="0.20761245674740483" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/activity_register.xml" value="0.2191780821917808" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/activity_view_article.xml" value="0.2222222222222222" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/articles.xml" value="0.25" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/content_register.xml" value="0.25" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/fragment_category.xml" value="0.25" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/fragment_first.xml" value="0.25" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/fragment_home.xml" value="0.22777777777777777" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/fragment_live_news.xml" value="0.1" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/menu/options_menu.xml" value="0.2222222222222222" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/menu/options_menu_2.xml" value="0.2222222222222222" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
