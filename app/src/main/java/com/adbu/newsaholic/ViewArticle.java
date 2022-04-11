@@ -95,7 +95,7 @@ public class ViewArticle extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.options_menu_1, menu);
+        inflater.inflate(R.menu.options_menu_2, menu);
         return true;
     }
 
