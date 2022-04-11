@@ -102,12 +102,15 @@ public class ViewArticle extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.logout:
-
+            case R.id.bookmark:
+                addToBookMarks();
                 break;
             default:
                 Toast.makeText(ViewArticle.this, "Invalid Option", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void addToBookMarks() {
     }
 }
