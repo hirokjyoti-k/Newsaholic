@@ -20,7 +20,11 @@ import com.adbu.newsaholic.firebase.Firebase;
 import com.adbu.newsaholic.model.User;
 import com.bumptech.glide.Glide;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.kwabenaberko.newsapilib.models.Article;
+import com.kwabenaberko.newsapilib.models.Source;
 
 public class ViewArticle extends AppCompatActivity {
 
@@ -29,12 +33,14 @@ public class ViewArticle extends AppCompatActivity {
     private ImageView image;
     private MaterialButton notifocation;
     private FirebaseData firebaseData;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_article);
 
+        auth = FirebaseAuth.getInstance();
         firebaseData = new FirebaseData(this);
 
         source = (TextView) findViewById(R.id.source);
@@ -57,7 +63,12 @@ public class ViewArticle extends AppCompatActivity {
     }
 
     private void getArticleData() {
+
+        Source source = new Source();
+        source.setName(getIntent().getStringExtra("source"));
+
         article = new Article();
+        article.setSource(source);
         article.setAuthor(getIntent().getStringExtra("author"));
         article.setTitle(getIntent().getStringExtra("title"));
         article.setDescription(getIntent().getStringExtra("description"));
@@ -81,9 +92,9 @@ public class ViewArticle extends AppCompatActivity {
     }
 
     public void sendNotification(View view) {
-        SendNotification sendNotification = new SendNotification(getIntent().getStringExtra("source"));
+        SendNotification sendNotification = new SendNotification(getIntent().getStringExtra("source"), this);
         sendNotification.execute(article);
-        Toast.makeText(ViewArticle.this, "Notification sent successfully", Toast.LENGTH_LONG).show();
+//        Toast.makeText(ViewArticle.this, "Notification sent successfully", Toast.LENGTH_LONG).show();
     }
 
     public void readMore(View view) { ;
@@ -112,5 +123,10 @@ public class ViewArticle extends AppCompatActivity {
     }
 
     private void addToBookMarks() {
+        DatabaseReference bookmarkRef = FirebaseDatabase.getInstance().getReference("users/"+
+                auth.getCurrentUser().getUid()+"/Bookmarks/"+article.getPublishedAt());
+
+        bookmarkRef.setValue(article);
+        Toast.makeText(this, "Bookmark added.", Toast.LENGTH_SHORT).show();
     }
 }

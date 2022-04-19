@@ -1,6 +1,8 @@
 package com.adbu.newsaholic.drivers;
 
+import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import com.kwabenaberko.newsapilib.models.Article;
 
@@ -13,16 +15,16 @@ public class SendNotification extends AsyncTask<Article, Void, Void>{
 
     private Article article;
     private String source;
+    private Context context;
 
-    public SendNotification(String source){
+    public SendNotification(String source, Context context){
         this.source = source;
+        this.context = context;
     }
 
     @Override
     protected Void doInBackground(Article... articles) {
-        for (Article a : articles){
-            article = a;
-        }
+        article = articles[0];
         try{
             String jsonResponse;
             URL url = new URL("https://onesignal.com/api/v1/notifications");
@@ -71,5 +73,12 @@ public class SendNotification extends AsyncTask<Article, Void, Void>{
             System.out.println(e);
         }
         return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void unused) {
+        super.onPostExecute(unused);
+        Toast.makeText(context, "Notification sent successfully", Toast.LENGTH_LONG).show();
+
     }
 }
