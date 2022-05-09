@@ -244,7 +244,8 @@
             android:layout_alignParentBottom="true"
             android:background="@drawable/rounded_cornner"
             android:onClick="saveTopics"
-            android:text="Next"/>
+            android:text="Next"
+            android:foreground="?attr/selectableItemBackground"/>
 
     </RelativeLayout>
 

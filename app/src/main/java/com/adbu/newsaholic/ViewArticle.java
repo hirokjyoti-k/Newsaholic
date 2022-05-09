@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.browser.customtabs.CustomTabsIntent;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -116,10 +117,21 @@ public class ViewArticle extends AppCompatActivity {
             case R.id.bookmark:
                 addToBookMarks();
                 break;
+            case R.id.share:
+                share();
+                break;
             default:
                 Toast.makeText(ViewArticle.this, "Invalid Option", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void share() {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, article.getTitle()+"\n\nRead more:-"+article.getUrl());
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
     }
 
     private void addToBookMarks() {

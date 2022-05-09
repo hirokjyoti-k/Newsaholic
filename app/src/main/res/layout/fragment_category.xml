@@ -22,7 +22,8 @@
                 android:layout_height="35dp"
                 android:background="@drawable/button_shape"
                 android:layout_margin="3dp"
-                android:text="general" />
+                android:text="general"
+                android:foreground="?attr/selectableItemBackground"/>
 
             <Button
                 android:id="@+id/entertainment"
@@ -30,7 +31,8 @@
                 android:layout_height="35dp"
                 android:background="@drawable/button_shape"
                 android:layout_margin="3dp"
-                android:text="entertainment" />
+                android:text="entertainment"
+                android:foreground="?attr/selectableItemBackground"/>
 
             <Button
                 android:id="@+id/business"
@@ -38,7 +40,8 @@
                 android:layout_height="35dp"
                 android:background="@drawable/button_shape"
                 android:layout_margin="3dp"
-                android:text="business" />
+                android:text="business"
+                android:foreground="?attr/selectableItemBackground"/>
 
             <Button
                 android:id="@+id/health"
@@ -46,7 +49,8 @@
                 android:layout_height="35dp"
                 android:background="@drawable/button_shape"
                 android:layout_margin="3dp"
-                android:text="health" />
+                android:text="health"
+                android:foreground="?attr/selectableItemBackground"/>
 
             <Button
                 android:id="@+id/science"
@@ -54,7 +58,8 @@
                 android:layout_height="35dp"
                 android:background="@drawable/button_shape"
                 android:layout_margin="3dp"
-                android:text="science" />
+                android:text="science"
+                android:foreground="?attr/selectableItemBackground"/>
 
             <Button
                 android:id="@+id/sports"
@@ -62,7 +67,8 @@
                 android:layout_height="35dp"
                 android:background="@drawable/button_shape"
                 android:layout_margin="3dp"
-                android:text="sports" />
+                android:text="sports"
+                android:foreground="?attr/selectableItemBackground"/>
 
             <Button
                 android:id="@+id/technology"
@@ -70,7 +76,8 @@
                 android:layout_height="35dp"
                 android:background="@drawable/button_shape"
                 android:layout_margin="3dp"
-                android:text="technology" />
+                android:text="technology"
+                android:foreground="?attr/selectableItemBackground"/>
 
         </LinearLayout>
 

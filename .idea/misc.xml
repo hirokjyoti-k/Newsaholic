@@ -13,7 +13,8 @@
         <entry key="..\:/Android/Newsaholic/app/src/main/res/drawable/rounded_cornner.xml" value="0.23333333333333334" />
         <entry key="..\:/Android/Newsaholic/app/src/main/res/drawable/science.xml" value="0.23333333333333334" />
         <entry key="..\:/Android/Newsaholic/app/src/main/res/drawable/sports.xml" value="0.23333333333333334" />
-        <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/activity_interest_area.xml" value="0.264" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/activity_interest_area.xml" value="0.2191780821917808" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/activity_live_tvplayer.xml" value="0.2222222222222222" />
         <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/activity_login.xml" value="0.20761245674740483" />
         <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/activity_register.xml" value="0.2191780821917808" />
@@ -25,8 +26,10 @@
         <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/fragment_first.xml" value="0.25" />
         <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/fragment_home.xml" value="0.22777777777777777" />
         <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/fragment_live_news.xml" value="0.1" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/news.xml" value="0.2222222222222222" />
         <entry key="..\:/Android/Newsaholic/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
         <entry key="..\:/Android/Newsaholic/app/src/main/res/menu/options_menu.xml" value="0.2222222222222222" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/menu/options_menu_1.xml" value="0.2222222222222222" />
         <entry key="..\:/Android/Newsaholic/app/src/main/res/menu/options_menu_2.xml" value="0.2222222222222222" />
       </map>
     </option>

@@ -5,7 +5,11 @@
     <item
         android:id="@+id/bookmark"
         android:title="Bookmark"
-        app:showAsAction="always"
-        android:icon="@drawable/ic_baseline_bookmarks_24"/>
+        android:icon="@drawable/ic_baseline_bookmarks_24" />
+
+    <item
+        android:id="@+id/share"
+        android:title="Share"
+        android:icon="@drawable/ic_baseline_share_24" />
 
 </menu>

@@ -1,6 +1,5 @@
 package com.adbu.newsaholic.fragment;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,13 +18,8 @@ import com.adbu.newsaholic.R;
 import com.adbu.newsaholic.adapter.NewsAdapter;
 import com.adbu.newsaholic.drivers.FirebaseData;
 import com.adbu.newsaholic.firebase.Firebase;
+
 import com.adbu.newsaholic.model.User;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.kwabenaberko.newsapilib.NewsApiClient;
 import com.kwabenaberko.newsapilib.models.Article;
 import com.kwabenaberko.newsapilib.models.request.TopHeadlinesRequest;
@@ -41,7 +35,6 @@ public class Category extends Fragment implements View.OnClickListener {
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private Button general, entertainment, business, health, science, sports, technology;
-    private FirebaseAuth auth;
     private String country;
     private FirebaseData firebaseData;
 
@@ -95,7 +88,6 @@ public class Category extends Fragment implements View.OnClickListener {
         switch(v.getId()){
             case R.id.general:
                 loadNewsByCategory("general");
-                break;
             case R.id.entertainment:
                 loadNewsByCategory("entertainment");
                 break;
