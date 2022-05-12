@@ -74,7 +74,7 @@ public class Bookmark extends Fragment {
                 //sort news by date and time
                 progressDialog.dismiss();
                 Collections.reverse(articles);
-                recyclerView.setAdapter(new NewsAdapter(articles, getContext()));
+                recyclerView.setAdapter(new NewsAdapter(articles, getContext(), true));
             }
 
             @Override

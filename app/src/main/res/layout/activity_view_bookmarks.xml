@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewArticle"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ViewBookmarks">
 
     <ImageView
         android:id="@+id/image"
@@ -62,19 +62,6 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/notification"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/button_shape"
-            android:visibility="gone"
-            android:text="Send Notification"
-            android:layout_above="@+id/readmore"
-            android:onClick="sendNotification"
-            android:foreground="?attr/selectableItemBackground"/>
-
-        <com.google.android.material.button.MaterialButton
             android:id="@+id/readmore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -87,8 +74,6 @@
             android:onClick="readMore"
             android:text="Read More"
             android:foreground="?attr/selectableItemBackground"/>
-
-
 
     </RelativeLayout>
 

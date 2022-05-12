@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/addBookmark"
-        android:title="Add Bookmark"
+        android:id="@+id/removeBookmark"
+        android:title="Remove Bookmark"
         android:icon="@drawable/ic_baseline_bookmarks_24" />
 
     <item

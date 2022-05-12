@@ -12,11 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Newsaholic">
         <activity
+            android:name=".ViewBookmarks"
+            android:exported="false" />
+        <activity
             android:name=".LiveTVPlayer"
-            android:exported="false"
-            android:theme="@style/Theme.Newsaholic.NoActionBar"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
-            />
+            android:exported="false"
+            android:theme="@style/Theme.Newsaholic.NoActionBar" />
         <activity
             android:name=".ViewArticle"
             android:exported="false" />

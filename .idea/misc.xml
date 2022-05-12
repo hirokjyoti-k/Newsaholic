@@ -19,6 +19,7 @@
         <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/activity_register.xml" value="0.2191780821917808" />
         <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/activity_view_article.xml" value="0.2222222222222222" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/activity_view_bookmarks.xml" value="0.2222222222222222" />
         <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/articles.xml" value="0.25" />
         <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/content_register.xml" value="0.25" />
         <entry key="..\:/Android/Newsaholic/app/src/main/res/layout/fragment_bookmark.xml" value="0.13472222222222222" />
@@ -31,6 +32,7 @@
         <entry key="..\:/Android/Newsaholic/app/src/main/res/menu/options_menu.xml" value="0.2222222222222222" />
         <entry key="..\:/Android/Newsaholic/app/src/main/res/menu/options_menu_1.xml" value="0.2222222222222222" />
         <entry key="..\:/Android/Newsaholic/app/src/main/res/menu/options_menu_2.xml" value="0.2222222222222222" />
+        <entry key="..\:/Android/Newsaholic/app/src/main/res/menu/options_menu_3.xml" value="0.2222222222222222" />
       </map>
     </option>
   </component>

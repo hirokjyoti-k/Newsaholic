@@ -15,50 +15,33 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.adbu.newsaholic.drivers.FirebaseData;
-import com.adbu.newsaholic.drivers.SendNotification;
-import com.adbu.newsaholic.firebase.Firebase;
-import com.adbu.newsaholic.model.User;
 import com.bumptech.glide.Glide;
-import com.google.android.material.button.MaterialButton;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.kwabenaberko.newsapilib.models.Article;
 import com.kwabenaberko.newsapilib.models.Source;
 
-public class ViewArticle extends AppCompatActivity {
+public class ViewBookmarks extends AppCompatActivity {
 
     private Article article;
     private TextView source, author, title, description;
     private ImageView image;
-    private MaterialButton notifocation;
-    private FirebaseData firebaseData;
     private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_article);
+        setContentView(R.layout.activity_view_bookmarks);
 
         auth = FirebaseAuth.getInstance();
-        firebaseData = new FirebaseData(this);
 
         source = (TextView) findViewById(R.id.source);
         author = (TextView) findViewById(R.id.author);
         title = (TextView) findViewById(R.id.title);
         description = (TextView) findViewById(R.id.description);
         image = (ImageView) findViewById(R.id.image);
-
-        notifocation = (MaterialButton) findViewById(R.id.notification);
-
-        firebaseData.readUser(new Firebase() {
-            @Override
-            public void user(User user) {
-                if(user.isAdmin())
-                    notifocation.setVisibility(View.VISIBLE);
-            }
-        });
 
         getArticleData();
     }
@@ -92,12 +75,6 @@ public class ViewArticle extends AppCompatActivity {
                 .into(image);
     }
 
-    public void sendNotification(View view) {
-        SendNotification sendNotification = new SendNotification(getIntent().getStringExtra("source"), this);
-        sendNotification.execute(article);
-//        Toast.makeText(ViewArticle.this, "Notification sent successfully", Toast.LENGTH_LONG).show();
-    }
-
     public void readMore(View view) { ;
         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
         CustomTabsIntent customTabsIntent = builder.build();
@@ -107,21 +84,21 @@ public class ViewArticle extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.options_menu_2, menu);
+        inflater.inflate(R.menu.options_menu_3, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.addBookmark:
-                addToBookMarks();
+            case R.id.removeBookmark:
+                removeBookmark();
                 break;
             case R.id.share:
                 share();
                 break;
             default:
-                Toast.makeText(ViewArticle.this, "Invalid Option", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ViewBookmarks.this, "Invalid Option", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -134,11 +111,10 @@ public class ViewArticle extends AppCompatActivity {
         startActivity(sendIntent);
     }
 
-    private void addToBookMarks() {
+    private void removeBookmark() {
         DatabaseReference bookmarkRef = FirebaseDatabase.getInstance().getReference("users/"+
                 auth.getCurrentUser().getUid()+"/Bookmarks/"+article.getPublishedAt());
-
-        bookmarkRef.setValue(article);
-        Toast.makeText(this, "Bookmark added.", Toast.LENGTH_SHORT).show();
+        bookmarkRef.removeValue();
+        finish();
     }
 }

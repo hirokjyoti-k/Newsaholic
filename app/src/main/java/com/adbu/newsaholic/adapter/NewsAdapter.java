@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.adbu.newsaholic.R;
 import com.adbu.newsaholic.ViewArticle;
 
+import com.adbu.newsaholic.ViewBookmarks;
 import com.bumptech.glide.Glide;
 import com.kwabenaberko.newsapilib.models.Article;
 
@@ -25,10 +26,17 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     List<Article> articles;
     Context context;
+    boolean bookmark = false;
 
     public NewsAdapter(List<Article> articles, Context context) {
         this.articles = articles;
         this.context = context;
+    }
+
+    public NewsAdapter(List<Article> articles, Context context, boolean bookmark) {
+        this.articles = articles;
+        this.context = context;
+        this.bookmark = bookmark;
     }
 
     @NonNull
@@ -47,7 +55,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ViewArticle.class);
+                Intent intent;
+                if(bookmark)
+                    intent = new Intent(context, ViewBookmarks.class);
+                else
+                    intent = new Intent(context, ViewArticle.class);
                 intent.putExtra("source", ""+article.getSource().getName());
                 intent.putExtra("author", ""+article.getAuthor());
                 intent.putExtra("title", ""+article.getTitle());
