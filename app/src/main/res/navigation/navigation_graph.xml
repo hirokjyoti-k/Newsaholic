@@ -10,19 +10,36 @@
         android:name="com.adbu.newsaholic.fragment.Home"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+
     <fragment
         android:id="@+id/category"
         android:name="com.adbu.newsaholic.fragment.Category"
         android:label="fragment_category"
         tools:layout="@layout/fragment_category" />
+
     <fragment
         android:id="@+id/liveNews"
         android:name="com.adbu.newsaholic.fragment.LiveNews"
         android:label="fragment_live_news"
-        tools:layout="@layout/fragment_live_news" />
+        tools:layout="@layout/fragment_live_news" >
+        <action
+            android:id="@+id/action_liveNews_to_addChannels"
+            app:destination="@id/addChannels" />
+    </fragment>
+
     <fragment
         android:id="@+id/bookmark"
         android:name="com.adbu.newsaholic.fragment.Bookmark"
         android:label="fragment_bookmark"
         tools:layout="@layout/fragment_bookmark" />
+
+    <fragment
+        android:id="@+id/addChannels"
+        android:name="com.adbu.newsaholic.fragment.addChannels"
+        android:label="fragment_add_channels"
+        tools:layout="@layout/fragment_add_channels" >
+        <action
+            android:id="@+id/action_addChannels_to_liveNews"
+            app:destination="@id/liveNews" />
+    </fragment>
 </navigation>

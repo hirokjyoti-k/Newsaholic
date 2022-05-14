@@ -32,4 +32,20 @@ public class LiveChannel {
     public String getLanguage() {
         return Language;
     }
+
+    public void setNewsName(String newsName) {
+        NewsName = newsName;
+    }
+
+    public void setNewsUrl(String newsUrl) {
+        NewsUrl = newsUrl;
+    }
+
+    public void setNewsLogo(String newsLogo) {
+        NewsLogo = newsLogo;
+    }
+
+    public void setLanguage(String language) {
+        Language = language;
+    }
 }

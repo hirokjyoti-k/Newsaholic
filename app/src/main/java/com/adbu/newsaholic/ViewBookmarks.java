@@ -115,6 +115,7 @@ public class ViewBookmarks extends AppCompatActivity {
         DatabaseReference bookmarkRef = FirebaseDatabase.getInstance().getReference("users/"+
                 auth.getCurrentUser().getUid()+"/Bookmarks/"+article.getPublishedAt());
         bookmarkRef.removeValue();
+        Toast.makeText(this, "Bookmark removed.", Toast.LENGTH_SHORT).show();
         finish();
     }
 }
