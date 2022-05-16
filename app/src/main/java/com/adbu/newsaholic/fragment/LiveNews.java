@@ -20,6 +20,7 @@ import com.adbu.newsaholic.R;
 import com.adbu.newsaholic.adapter.ChannelAdapter;
 import com.adbu.newsaholic.drivers.FirebaseData;
 import com.adbu.newsaholic.firebase.Firebase;
+import com.adbu.newsaholic.model.ChannelSortByName;
 import com.adbu.newsaholic.model.LiveChannel;
 import com.adbu.newsaholic.model.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -30,6 +31,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class LiveNews extends Fragment {
@@ -94,6 +97,8 @@ public class LiveNews extends Fragment {
                     LiveChannel channel = snapshot.getValue(LiveChannel.class);
                     liveChannels.add(channel);
                 }
+                //liveChannels.sort(new ChannelSortByName());
+                Collections.sort(liveChannels, new ChannelSortByName());
                 recyclerView.setAdapter(new ChannelAdapter(liveChannels, getContext()));
             }
             @Override
