@@ -16,6 +16,7 @@ import com.adbu.newsaholic.R;
 import com.adbu.newsaholic.adapter.NewsAdapter;
 import com.adbu.newsaholic.drivers.FirebaseData;
 import com.adbu.newsaholic.firebase.Firebase;
+import com.adbu.newsaholic.model.ArticleSortByDate;
 import com.adbu.newsaholic.model.User;
 import com.kwabenaberko.newsapilib.NewsApiClient;
 import com.kwabenaberko.newsapilib.models.Article;
@@ -23,6 +24,7 @@ import com.kwabenaberko.newsapilib.models.request.TopHeadlinesRequest;
 import com.kwabenaberko.newsapilib.models.response.ArticleResponse;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Home extends Fragment {
@@ -55,7 +57,7 @@ public class Home extends Fragment {
         firebaseData.readUser(new Firebase() {
             @Override
             public void user(User user) {
-//                loadNews(user);
+                loadNews(user);
             }
         });
 
@@ -63,26 +65,33 @@ public class Home extends Fragment {
 
     public void loadNews(User user) {
 
-        newsApiClient.getTopHeadlines(
-                new TopHeadlinesRequest.Builder()
-                        .country(user.getCountry())
-                        .build(),
-                new NewsApiClient.ArticlesResponseCallback() {
-                    @Override
-                    public void onSuccess(ArticleResponse response) {
-                        articles.clear();
-                        for(Article article: response.getArticles()){
-                            articles.add(article);
-                            System.out.println(response.getTotalResults());
-                        }
-                        recyclerView.setAdapter(new NewsAdapter(articles, getContext()));
-                    }
+        String[] categories = user.getCategory().split(",");
+        articles.clear();
 
-                    @Override
-                    public void onFailure(Throwable throwable) {
-                        System.out.println(throwable.getMessage());
+        for(String categroy : categories){
+            newsApiClient.getTopHeadlines(
+                    new TopHeadlinesRequest.Builder()
+                            .country(user.getCountry())
+                            .category(categroy)
+                            .build(),
+                    new NewsApiClient.ArticlesResponseCallback() {
+                        @Override
+                        public void onSuccess(ArticleResponse response) {
+//                            articles.clear();
+                            for(Article article: response.getArticles()){
+                                articles.add(article);
+                            }
+                            Collections.sort(articles, new ArticleSortByDate());
+                            Collections.reverse(articles);
+                            recyclerView.setAdapter(new NewsAdapter(articles, getContext()));
+                        }
+
+                        @Override
+                        public void onFailure(Throwable throwable) {
+                            System.out.println(throwable.getMessage());
+                        }
                     }
-                }
-        );
+            );
+        }
     }
 }
