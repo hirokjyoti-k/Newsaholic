@@ -6,82 +6,67 @@
     android:orientation="vertical"
     tools:context=".fragment.Category">
 
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none">
-
         <LinearLayout
-            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-            <Button
-                android:id="@+id/general"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:background="@drawable/button_shape"
-                android:layout_margin="3dp"
-                android:text="general"
-                android:foreground="?attr/selectableItemBackground"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:weightSum="10"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/entertainment"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:background="@drawable/button_shape"
-                android:layout_margin="3dp"
-                android:text="entertainment"
-                android:foreground="?attr/selectableItemBackground"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:fontFamily="@font/sansation_regular"
+                    android:gravity="center"
+                    android:text="Country"
+                    android:textSize="16sp" />
 
-            <Button
-                android:id="@+id/business"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:background="@drawable/button_shape"
-                android:layout_margin="3dp"
-                android:text="business"
-                android:foreground="?attr/selectableItemBackground"/>
+                <Spinner
+                    android:id="@+id/country"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:entries="@array/country"
+                    android:gravity="center" />
 
-            <Button
-                android:id="@+id/health"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:background="@drawable/button_shape"
-                android:layout_margin="3dp"
-                android:text="health"
-                android:foreground="?attr/selectableItemBackground"/>
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/science"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:background="@drawable/button_shape"
-                android:layout_margin="3dp"
-                android:text="science"
-                android:foreground="?attr/selectableItemBackground"/>
 
-            <Button
-                android:id="@+id/sports"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:background="@drawable/button_shape"
-                android:layout_margin="3dp"
-                android:text="sports"
-                android:foreground="?attr/selectableItemBackground"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:weightSum="10"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/technology"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:background="@drawable/button_shape"
-                android:layout_margin="3dp"
-                android:text="technology"
-                android:foreground="?attr/selectableItemBackground"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:fontFamily="@font/sansation_regular"
+                    android:gravity="center"
+                    android:text="Category"
+                    android:textSize="16sp" />
+
+                <Spinner
+                    android:id="@+id/category"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:entries="@array/category"
+                    android:gravity="center" />
+
+            </LinearLayout>
 
         </LinearLayout>
-
-    </HorizontalScrollView>
 
 
     <androidx.recyclerview.widget.RecyclerView

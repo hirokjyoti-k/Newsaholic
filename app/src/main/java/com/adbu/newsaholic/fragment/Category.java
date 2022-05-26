@@ -1,5 +1,6 @@
 package com.adbu.newsaholic.fragment;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.adbu.newsaholic.R;
@@ -28,15 +31,15 @@ import com.kwabenaberko.newsapilib.models.response.ArticleResponse;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Category extends Fragment implements View.OnClickListener {
+public class Category extends Fragment {
 
     private NewsApiClient newsApiClient;
     private List<Article> articles;
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
-    private Button general, entertainment, business, health, science, sports, technology;
-    private String country;
-    private FirebaseData firebaseData;
+    private String countryStr, categoryStr;
+    private Spinner country, category;
+    private ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,73 +53,61 @@ public class Category extends Fragment implements View.OnClickListener {
         super.onViewCreated(view, savedInstanceState);
 
         newsApiClient = new NewsApiClient("1b597cd6f2e542ba88bef759ca4c9714");
-        firebaseData = new FirebaseData(getContext());
         articles = new ArrayList<>();
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
         linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        general = (Button) view.findViewById(R.id.general);
-        entertainment = (Button) view.findViewById(R.id.entertainment);
-        business = (Button) view.findViewById(R.id.business);
-        health = (Button) view.findViewById(R.id.health);
-        science = (Button) view.findViewById(R.id.science);
-        sports = (Button) view.findViewById(R.id.sports);
-        technology = (Button) view.findViewById(R.id.technology);
+        country = (Spinner) view.findViewById(R.id.country);
+        category = (Spinner) view.findViewById(R.id.category);
 
-        general.setOnClickListener(this);
-        entertainment.setOnClickListener(this);
-        business.setOnClickListener(this);
-        health.setOnClickListener(this);
-        science.setOnClickListener(this);
-        sports.setOnClickListener(this);
-        technology.setOnClickListener(this);
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Please wait...");
+        progressDialog.setCancelable(false);
 
-        firebaseData.readUser(new Firebase() {
+        getCountry();
+        getCategory();
+    }
+
+    private void getCategory() {
+        String[] categoryCode = {"general","entertainment","business","health","science","sports","technology"};
+        category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void user(User user) {
-                country = user.getCountry();
-                loadNewsByCategory("general");
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                categoryStr = categoryCode[position];
+                loadNews();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
-
     }
 
-    @Override
-    public void onClick(View v) {
-        switch(v.getId()){
-            case R.id.general:
-                loadNewsByCategory("general");
-            case R.id.entertainment:
-                loadNewsByCategory("entertainment");
-                break;
-            case R.id.business:
-                loadNewsByCategory("business");
-                break;
-            case R.id.health:
-                loadNewsByCategory("health");
-                break;
-            case R.id.science:
-                loadNewsByCategory("science");
-                break;
-            case R.id.sports:
-                loadNewsByCategory("sports");
-                break;
-            case R.id.technology:
-                loadNewsByCategory("technology");
-                break;
-            default:
-                Toast.makeText(getContext(), "Please select a category", Toast.LENGTH_SHORT).show();
-        }
+    private void getCountry() {
+
+        String[] code = {"in","au","ca","fr","il","it","jp","ru","sa","sg","tr","us","ae"};
+        country.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                countryStr = code[position];
+                loadNews();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
-    private void loadNewsByCategory(String category) {
+    private void loadNews() {
 
+        progressDialog.show();
         newsApiClient.getTopHeadlines(
                 new TopHeadlinesRequest.Builder()
-                        .country(country)
-                        .category(category)
+                        .country(countryStr)
+                        .category(categoryStr)
                         .pageSize(100)
                         .build(),
                 new NewsApiClient.ArticlesResponseCallback() {
@@ -127,6 +118,7 @@ public class Category extends Fragment implements View.OnClickListener {
                             articles.add(article);
                         }
                         recyclerView.setAdapter(new NewsAdapter(articles, getContext()));
+                        progressDialog.dismiss();
                     }
 
                     @Override
