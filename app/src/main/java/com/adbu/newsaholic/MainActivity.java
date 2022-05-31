@@ -57,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, Login.class));
                 finish();
                 break;
+            case R.id.profile:
+                Intent intent = new Intent(MainActivity.this, Profile.class);
+                startActivity(intent);
+                break;
             default:
                 Toast.makeText(MainActivity.this, "Invalid Option", Toast.LENGTH_SHORT).show();
         }

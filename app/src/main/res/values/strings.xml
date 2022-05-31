@@ -21,6 +21,11 @@
     <string name="don_t_have_an_account">Don\'t have an account ?
         <font color="#FF6200EE">Register</font>
     </string>
+
+    <string name="reset_password">
+        <font color="#FF6200EE">Reset Password</font>
+    </string>
+
     <string name="expand_your_feed_with_topics">Expand your feed with Topics</string>
 
     <string-array name="country">

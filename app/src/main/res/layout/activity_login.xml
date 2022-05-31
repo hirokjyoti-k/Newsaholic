@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:src="@drawable/undraw_newspaper" />
+            android:src="@drawable/undraw_login" />
 
         <TextView
             android:layout_width="match_parent"

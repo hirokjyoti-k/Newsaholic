@@ -37,7 +37,7 @@ public class FirebaseData extends AppCompatActivity {
         userRef = FirebaseDatabase.getInstance().getReference("users/"+auth.getCurrentUser().getUid());
     }
 
-    public void readUser(Firebase firebase){
+    public void getUser(Firebase firebase){
 
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

@@ -54,7 +54,7 @@ public class Home extends Fragment {
         linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        firebaseData.readUser(new Firebase() {
+        firebaseData.getUser(new Firebase() {
             @Override
             public void user(User user) {
                 loadNews(user);

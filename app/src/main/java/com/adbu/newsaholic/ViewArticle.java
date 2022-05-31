@@ -52,7 +52,7 @@ public class ViewArticle extends AppCompatActivity {
 
         notifocation = (MaterialButton) findViewById(R.id.notification);
 
-        firebaseData.readUser(new Firebase() {
+        firebaseData.getUser(new Firebase() {
             @Override
             public void user(User user) {
                 if(user.isAdmin())

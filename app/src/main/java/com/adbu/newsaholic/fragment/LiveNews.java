@@ -32,7 +32,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class LiveNews extends Fragment {
@@ -66,7 +65,7 @@ public class LiveNews extends Fragment {
         progressDialog.setCancelable(false);
         progressDialog.show();
 
-        firebaseData.readUser(new Firebase() {
+        firebaseData.getUser(new Firebase() {
             @Override
             public void user(User user) {
                 if(user.isAdmin()){
