@@ -3,11 +3,13 @@ package com.adbu.newsaholic;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,7 +19,10 @@ import com.adbu.newsaholic.firebase.Firebase;
 import com.adbu.newsaholic.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Arrays;
 
 public class Profile extends AppCompatActivity {
 
@@ -25,6 +30,11 @@ public class Profile extends AppCompatActivity {
     private FirebaseData firebaseData;
     private EditText username, useremail;
     private TextView usercountry;
+    private String countrycode;
+    private CardView showCountry, selectCountry;
+    private LinearLayout editBtnsView;
+    private MaterialButton editBtn;
+    private Spinner country;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +48,100 @@ public class Profile extends AppCompatActivity {
         useremail = (EditText) findViewById(R.id.useremail);
         usercountry = (TextView) findViewById(R.id.usercountry);
 
+        showCountry = (CardView) findViewById(R.id.showCountryCardview);
+        selectCountry = (CardView) findViewById(R.id.selectCountryCardview);
+
+        editBtn = (MaterialButton) findViewById(R.id.editButton);
+        editBtnsView = (LinearLayout) findViewById(R.id.editButtonsView);
+
+        country = (Spinner) findViewById(R.id.country);
+
         firebaseData.getUser(new Firebase() {
             @Override
             public void user(User user) {
                 username.setText(user.getName());
                 useremail.setText(user.getEmail());
-                usercountry.setText(user.getCountry());
+                countrycode = user.getCountry();
+
+                String[] code = {"in","au","ca","fr","il","it","jp","ru","sa","sg","tr","us","ae"};
+                String[] country = {"India","Australia","Canada","France","Israel","Italy","Japan","Russia","Saudi",
+                        "Singapore","Turkey","United State","UAE"};
+                usercountry.setText(country[Arrays.binarySearch(code, countrycode)]);
+
+//                switch (countrycode){
+//                    case "in":
+//                        usercountry.setText("India");
+//                        break;
+//                    case "au":
+//                        usercountry.setText("Australia");
+//                        break;
+//                    case "ca":
+//                        usercountry.setText("Canada");
+//                        break;
+//                    case "fr":
+//                        usercountry.setText("France");
+//                        break;
+//                    case "il":
+//                        usercountry.setText("Israel");
+//                        break;
+//                    case "it":
+//                        usercountry.setText("Italy");
+//                        break;
+//                    case "jp":
+//                        usercountry.setText("Japan");
+//                        break;
+//                    case "ru":
+//                        usercountry.setText("Russia");
+//                        break;
+//                    case "sa":
+//                        usercountry.setText("Saudi");
+//                        break;
+//                    case "sg":
+//                        usercountry.setText("Singapore");
+//                        break;
+//                    case "tr":
+//                        usercountry.setText("Turkey");
+//                        break;
+//                    case "us":
+//                        usercountry.setText("United States");
+//                        break;
+//                    case "ae":
+//                        usercountry.setText("UAE");
+//                        break;
+//                    default:
+//                        Toast.makeText(Profile.this, "Invalid Option", Toast.LENGTH_SHORT).show();
+//                }
+
             }
         });
 
+    }
+
+    public void editProfile(View view) {
+
+        username.setEnabled(true);
+
+        editBtnsView.setVisibility(View.VISIBLE);
+        editBtn.setVisibility(View.GONE);
+
+        selectCountry.setVisibility(View.VISIBLE);
+        showCountry.setVisibility(View.GONE);
+
+        //sync spinner country value with database value
+        String[] code = {"in","au","ca","fr","il","it","jp","ru","sa","sg","tr","us","ae"};
+        country.setSelection(Arrays.binarySearch(code,countrycode));
+
+    }
+
+    public void cancel(View view) {
+
+        username.setEnabled(false);
+
+        editBtnsView.setVisibility(View.GONE);
+        editBtn.setVisibility(View.VISIBLE);
+
+        selectCountry.setVisibility(View.GONE);
+        showCountry.setVisibility(View.VISIBLE);
     }
 
     public void save(View view) {
@@ -78,4 +173,6 @@ public class Profile extends AppCompatActivity {
                     }
                 }).show();
     }
+
+
 }
