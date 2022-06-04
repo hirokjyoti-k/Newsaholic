@@ -68,6 +68,7 @@ public class Profile extends AppCompatActivity {
                         "Singapore","Turkey","United State","UAE"};
                 usercountry.setText(country[Arrays.binarySearch(code, countrycode)]);
 
+
 //                switch (countrycode){
 //                    case "in":
 //                        usercountry.setText("India");
