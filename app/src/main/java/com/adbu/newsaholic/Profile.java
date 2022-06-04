@@ -68,51 +68,6 @@ public class Profile extends AppCompatActivity {
                         "Singapore","Turkey","United State","UAE"};
                 usercountry.setText(country[Arrays.binarySearch(code, countrycode)]);
 
-
-//                switch (countrycode){
-//                    case "in":
-//                        usercountry.setText("India");
-//                        break;
-//                    case "au":
-//                        usercountry.setText("Australia");
-//                        break;
-//                    case "ca":
-//                        usercountry.setText("Canada");
-//                        break;
-//                    case "fr":
-//                        usercountry.setText("France");
-//                        break;
-//                    case "il":
-//                        usercountry.setText("Israel");
-//                        break;
-//                    case "it":
-//                        usercountry.setText("Italy");
-//                        break;
-//                    case "jp":
-//                        usercountry.setText("Japan");
-//                        break;
-//                    case "ru":
-//                        usercountry.setText("Russia");
-//                        break;
-//                    case "sa":
-//                        usercountry.setText("Saudi");
-//                        break;
-//                    case "sg":
-//                        usercountry.setText("Singapore");
-//                        break;
-//                    case "tr":
-//                        usercountry.setText("Turkey");
-//                        break;
-//                    case "us":
-//                        usercountry.setText("United States");
-//                        break;
-//                    case "ae":
-//                        usercountry.setText("UAE");
-//                        break;
-//                    default:
-//                        Toast.makeText(Profile.this, "Invalid Option", Toast.LENGTH_SHORT).show();
-//                }
-
             }
         });
 
