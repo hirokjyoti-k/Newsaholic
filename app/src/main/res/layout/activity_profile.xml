@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:fontFamily="@font/sansation_regular"
-            android:text="Account Info"
+            android:text="Account Details"
             android:textAlignment="center"
             android:textAppearance="?attr/textAppearanceHeadline5"
             android:textColor="?attr/colorOnSurface" />
