@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +41,7 @@ public class Category extends Fragment {
     private String countryStr, categoryStr;
     private Spinner country, category;
     private ProgressDialog progressDialog;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,8 +68,17 @@ public class Category extends Fragment {
         progressDialog.setMessage("Please wait...");
         progressDialog.setCancelable(false);
 
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.categoryRefresh);
+
         getCountry();
         getCategory();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadNews();
+            }
+        });
     }
 
     private void getCategory() {
@@ -118,6 +129,7 @@ public class Category extends Fragment {
                             articles.add(article);
                         }
                         recyclerView.setAdapter(new NewsAdapter(articles, getContext()));
+                        swipeRefreshLayout.setRefreshing(false);
                         progressDialog.dismiss();
                     }
 

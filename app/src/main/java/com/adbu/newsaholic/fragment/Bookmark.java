@@ -64,9 +64,11 @@ public class Bookmark extends Fragment {
 
         DatabaseReference bookmarkRef = FirebaseDatabase.getInstance().getReference("users/"+
                 auth.getCurrentUser().getUid()+"/Bookmarks");
-        bookmarkRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+        bookmarkRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                articles.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Article article = dataSnapshot.getValue(Article.class);
                     articles.add(article);

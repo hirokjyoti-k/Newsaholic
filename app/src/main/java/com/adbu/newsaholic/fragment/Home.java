@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,8 @@ public class Home extends Fragment {
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private FirebaseData firebaseData;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private User userObj;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,13 +57,23 @@ public class Home extends Fragment {
         linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.homeRefresh);
+
         firebaseData.getUser(new Firebase() {
             @Override
             public void user(User user) {
                 loadNews(user);
+                userObj = user;
             }
         });
 
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadNews(userObj);
+            }
+        });
     }
 
     public void loadNews(User user) {
@@ -84,6 +97,7 @@ public class Home extends Fragment {
                             Collections.sort(articles, new ArticleSortByDate());
                             Collections.reverse(articles);
                             recyclerView.setAdapter(new NewsAdapter(articles, getContext()));
+                            swipeRefreshLayout.setRefreshing(false);
                         }
 
                         @Override
