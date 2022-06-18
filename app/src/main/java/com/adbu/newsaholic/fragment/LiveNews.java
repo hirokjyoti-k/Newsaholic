@@ -102,7 +102,7 @@ public class LiveNews extends Fragment {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getContext(), "" + databaseError, Toast.LENGTH_LONG).show();
+//                Toast.makeText(getContext(), "" + databaseError, Toast.LENGTH_LONG).show();
             }
         });
     }

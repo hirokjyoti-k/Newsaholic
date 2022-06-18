@@ -82,7 +82,7 @@ public class Bookmark extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 progressDialog.dismiss();
-                Toast.makeText(getContext(), "" + error, Toast.LENGTH_LONG).show();
+//                Toast.makeText(getContext(), "" + error, Toast.LENGTH_LONG).show();
             }
         });
     }

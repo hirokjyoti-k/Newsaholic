@@ -32,7 +32,7 @@ public class Login extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
-        if(auth.getCurrentUser()!=null){
+        if (auth.getCurrentUser() != null) {
             startActivity(new Intent(Login.this, MainActivity.class));
             finish();
         }
@@ -50,33 +50,33 @@ public class Login extends AppCompatActivity {
         Email = email.getText().toString().trim();
         Password = password.getText().toString().trim();
 
-        if(validateData()){
+        if (validateData()) {
             progressDialog.show();
             auth.signInWithEmailAndPassword(Email, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         progressDialog.dismiss();
                         startActivity(new Intent(Login.this, MainActivity.class));
                         finish();
-                    }else {
+                    } else {
                         progressDialog.dismiss();
-                        Toast.makeText(Login.this, ""+task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(Login.this, "" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
             });
-        }else {
+        } else {
             return;
         }
     }
 
     private boolean validateData() {
-        if(Email.isEmpty()){
+        if (Email.isEmpty()) {
             email.setError("Email can't be empty");
             return false;
         }
 
-        if(Password.isEmpty()){
+        if (Password.isEmpty()) {
             password.setError("Password can't be empty");
             return false;
         }
@@ -86,7 +86,7 @@ public class Login extends AppCompatActivity {
     public void forgotpassword(View view) {
 
         Email = email.getText().toString().trim();
-        if(Email.isEmpty()){
+        if (Email.isEmpty()) {
             email.setError("Email can't be empty");
             return;
         }
@@ -99,10 +99,10 @@ public class Login extends AppCompatActivity {
                         auth.sendPasswordResetEmail(Email).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful()){
+                                if (task.isSuccessful()) {
                                     Toast.makeText(Login.this, "Reset link sent successfully", Toast.LENGTH_SHORT).show();
-                                }else{
-                                    Toast.makeText(Login.this, ""+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(Login.this, "" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
 
                             }
